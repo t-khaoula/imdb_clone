@@ -1,5 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/Header";
+import { Providers } from "./Providers";
+import { Navbar } from "@/components/Navbar";
+import SearchBar from "@/components/SearchBar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "IMDB Clone",
+  title: "IMDb Clone",
   description: "This is a new database clone",
 };
 
@@ -23,7 +27,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <Header />
+          <Navbar />
+          <SearchBar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
